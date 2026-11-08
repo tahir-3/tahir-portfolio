@@ -75,7 +75,7 @@ const CodeCard = () => (
         </code>
       </pre>
     </div>
-    <Chip className="animate-float -left-2 -top-5 z-20 bg-brand-yellow text-neutral-950 sm:-left-6">Frappe / ERPNext</Chip>
+    <Chip className="animate-float -top-5 right-4 z-20 bg-brand-yellow text-neutral-950 sm:right-10">Frappe / ERPNext</Chip>
     <Chip className="animate-float-delay -right-2 top-1/3 z-20 bg-brand-blue text-white sm:-right-6">Vue.js</Chip>
     <Chip className="animate-float-slow -bottom-5 left-8 z-20 bg-brand-pink text-neutral-950">React</Chip>
   </div>

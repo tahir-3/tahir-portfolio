@@ -58,7 +58,7 @@ export const services = [
   {
     title: "Backend & ERP",
     icon: backend,
-    text: "Frappe / ERPNext customization, REST APIs, webhooks and integrations.",
+    text: "Frappe / ERPNext customization, REST APIs, webhooks, integrations and web scraping.",
   },
 ];
 
@@ -90,6 +90,8 @@ export const experiences = [
       "Develop and maintain web applications with Vue.js and related technologies.",
       "Work with designers, product managers and other developers to ship high-quality products.",
       "Build responsive interfaces that work across browsers and screen sizes.",
+      "Build data scrapers that collect listings and profiles from social media and real estate websites.",
+      "Keep scraping pipelines reliable at scale with rate-limit guards, captcha and challenge handling, and de-duplication.",
       "Take part in code reviews and give constructive feedback.",
     ],
   },
