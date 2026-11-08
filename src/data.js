@@ -34,7 +34,7 @@ export const profile = {
   summary:
     "I build ERP systems, dashboards and web apps that fit how a business actually works. Most of my work is on the Frappe Framework and ERPNext, with Vue, React and Python on top.",
   about:
-    "Full stack developer with deep experience customizing ERPNext and building on the Frappe Framework. I work across Python, JavaScript, React and Vue.js: tailoring ERP modules, building responsive dashboards, and designing REST APIs and webhooks that solve specific business problems. I care about shipping software that is efficient, easy to use, and makes daily operations smoother.",
+    "Full stack developer with deep experience customizing ERPNext and building on the Frappe Framework. I work across Python, JavaScript, React and Vue.js: tailoring ERP modules, building responsive dashboards, and designing REST APIs and webhooks that solve specific business problems. I work daily with AI coding agents (Claude Code, Codex and OpenCode) to plan, build and review faster, and I care about shipping software that is efficient, easy to use, and makes daily operations smoother.",
 };
 
 export const navLinks = [
@@ -76,6 +76,10 @@ export const technologies = [
   { name: "Git", icon: git },
   { name: "Docker", icon: docker },
   { name: "Postman", icon: postman },
+  // AI coding agents: no icon file, the ticker renders a letter tile instead.
+  { name: "Claude Code", mark: "CC", markBg: "bg-[#d97757] text-neutral-950" },
+  { name: "Codex", mark: "CX", markBg: "bg-white text-neutral-950" },
+  { name: "OpenCode", mark: "OC", markBg: "bg-brand-blue text-white" },
 ];
 
 // Newest first.
