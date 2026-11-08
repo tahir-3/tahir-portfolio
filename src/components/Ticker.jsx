@@ -2,9 +2,19 @@ import { technologies } from "../data";
 
 const Item = ({ tech }) => (
   <li className="flex shrink-0 items-center gap-3 px-6">
-    <span className="flex h-11 w-11 items-center justify-center border-2 border-inverse-foreground/30 bg-white p-1.5">
-      <img src={tech.icon} alt="" className="h-full w-full object-contain" loading="lazy" />
-    </span>
+    {tech.icon ? (
+      <span className="flex h-11 w-11 items-center justify-center border-2 border-inverse-foreground/30 bg-white p-1.5">
+        <img src={tech.icon} alt="" className="h-full w-full object-contain" loading="lazy" />
+      </span>
+    ) : (
+      <span
+        className={`flex h-11 w-11 items-center justify-center border-2 border-inverse-foreground/30 font-mono text-sm font-bold ${
+          tech.markBg ?? "bg-brand-yellow text-neutral-950"
+        }`}
+      >
+        {tech.mark}
+      </span>
+    )}
     <span className="text-lg font-bold whitespace-nowrap">{tech.name}</span>
     <span className="ml-6 text-brand-yellow" aria-hidden="true">✦</span>
   </li>
