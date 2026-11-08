@@ -1,0 +1,179 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 44 65% 94%;
+    --foreground: 0 0% 5%;
+    --card: 36 33% 97%;
+    --panel: 0 0% 100%;
+    --muted: 40 20% 88%;
+    --muted-foreground: 0 0% 34%;
+    --border: 0 0% 5%;
+    --shadow: 0 0% 5%;
+    --inverse: 0 0% 7%;
+    --inverse-foreground: 0 0% 98%;
+    --brand-blue: 231 88% 57%;
+    --brand-blue-hover: 231 88% 48%;
+    --brand-yellow: 48 96% 53%;
+    --brand-red: 0 84% 56%;
+    --brand-green: 145 63% 42%;
+    --brand-pink: 330 85% 65%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 0 0% 12%;
+    --foreground: 0 0% 96%;
+    --card: 0 0% 16%;
+    --panel: 0 0% 17%;
+    --muted: 0 0% 21%;
+    --muted-foreground: 0 0% 68%;
+    --border: 0 0% 0%;
+    --shadow: 0 0% 0%;
+    --inverse: 0 0% 6%;
+    --inverse-foreground: 0 0% 96%;
+    --brand-blue: 231 88% 64%;
+    --brand-blue-hover: 231 88% 56%;
+    --brand-yellow: 48 96% 55%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  ::selection {
+    background: hsl(var(--brand-yellow));
+    color: hsl(0 0% 5%);
+  }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--brand-blue));
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  /* Card that lifts on hover: hard shadow grows as it moves up-left. */
+  .brutal-card {
+    @apply border-2 border-border bg-card shadow-brutal-sm transition-[transform,box-shadow] duration-150 ease-out;
+  }
+  .brutal-card-hover {
+    @apply hover:-translate-x-px hover:-translate-y-px hover:shadow-brutal motion-reduce:transition-none motion-reduce:hover:translate-x-0 motion-reduce:hover:translate-y-0;
+  }
+
+  /* Button: lifts on hover, presses into its shadow on click. */
+  .btn {
+    @apply inline-flex min-h-11 cursor-pointer items-center justify-center gap-2 whitespace-nowrap border-2 border-border px-5 text-sm font-bold tracking-wide shadow-brutal-sm transition-[background-color,box-shadow,transform] duration-100 hover:-translate-y-0.5 hover:shadow-brutal active:translate-x-1 active:translate-y-1 active:shadow-none disabled:pointer-events-none disabled:opacity-60 motion-reduce:transition-none;
+  }
+  .btn-blue {
+    @apply bg-brand-blue text-white hover:bg-brand-blue-hover;
+  }
+  .btn-yellow {
+    @apply bg-brand-yellow text-neutral-950 hover:bg-brand-yellow/90;
+  }
+  .btn-plain {
+    @apply bg-panel text-foreground hover:bg-muted;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 border-2 border-border bg-brand-yellow px-3 py-1 text-xs font-bold uppercase tracking-widest text-neutral-950 shadow-brutal-sm;
+  }
+
+  .section {
+    @apply mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-24;
+  }
+
+  .field {
+    @apply w-full border-2 border-border bg-panel px-4 py-3 font-medium text-foreground placeholder:text-muted-foreground shadow-brutal-sm outline-none transition-shadow focus:shadow-brutal focus-visible:outline-none;
+  }
+}
+
+/* ---------- Animations ---------- */
+@keyframes hero-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+@keyframes underline-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+@keyframes badge-sheen {
+  0%, 55%, 100% { transform: translateX(-160%) skewX(-20deg); }
+  85% { transform: translateX(260%) skewX(-20deg); }
+}
+
+.animate-enter { animation: hero-enter 0.7s ease-out both; }
+.animate-enter-late { animation: hero-enter 0.72s ease-out 0.4s both; }
+.animate-float { animation: hero-float 6s ease-in-out infinite; }
+.animate-float-delay { animation: hero-float 6s ease-in-out 1.5s infinite; }
+.animate-float-slow { animation: hero-float 7s ease-in-out 0.8s infinite; }
+.animate-blink { animation: blink 1s steps(1) infinite; }
+
+/* Hand-drawn underline: draws once the parent marks it in view. */
+.underline-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.underline-draw.is-drawn path {
+  animation: underline-draw 0.8s ease-out 0.2s forwards;
+}
+
+.ticker-track {
+  animation: ticker var(--ticker-duration, 40s) linear infinite;
+  will-change: transform;
+}
+.ticker:hover .ticker-track { animation-play-state: paused; }
+
+.sheen { position: relative; overflow: hidden; }
+.sheen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  width: 40%;
+  background: linear-gradient(90deg, transparent, rgb(255 255 255 / 0.55), transparent);
+  animation: badge-sheen 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+/* Graph-paper texture for the hero background. */
+.bg-grid {
+  background-image:
+    linear-gradient(hsl(var(--foreground) / 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(var(--foreground) / 0.06) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-enter,
+  .animate-enter-late,
+  .animate-float,
+  .animate-float-delay,
+  .animate-float-slow,
+  .animate-blink,
+  .ticker-track,
+  .sheen::after {
+    animation: none !important;
+  }
+  .underline-draw path {
+    animation: none !important;
+    stroke-dashoffset: 0;
+  }
+}
