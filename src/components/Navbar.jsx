@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import logo from "../assets/logo.png";
+import avatar from "../assets/avatar.webp";
 import { navLinks, profile } from "../data";
 
 const getTheme = () =>
@@ -89,7 +89,7 @@ const Navbar = () => {
           className="flex min-w-0 items-center gap-3"
           aria-label={`${profile.fullName}, back to top`}
         >
-          <img src={logo} alt="" className="h-10 w-10 shrink-0 border-2 border-border object-cover shadow-brutal-sm" />
+          <img src={avatar} alt="" width="40" height="40" className="h-10 w-10 shrink-0 border-2 border-border object-cover shadow-brutal-sm" />
           <span className="truncate text-lg font-bold tracking-tight">
             {profile.firstName}
             <span className="text-brand-blue">.</span>
