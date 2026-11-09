@@ -38,7 +38,22 @@ const Experience = () => (
                   </span>
                   <div className="min-w-0">
                     <h3 className="text-xl font-bold leading-tight">{exp.title}</h3>
-                    <p className="font-semibold text-brand-blue">{exp.company}</p>
+                    {exp.companyUrl ? (
+                      <a
+                        href={exp.companyUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                        aria-label={`${exp.company} (opens in a new tab)`}
+                        className="inline-flex items-center gap-1 font-semibold text-brand-blue underline-offset-4 hover:underline"
+                      >
+                        {exp.company}
+                        <svg viewBox="0 0 24 24" className="h-3.5 w-3.5" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
+                          <path d="M7 17L17 7M9 7h8v8" />
+                        </svg>
+                      </a>
+                    ) : (
+                      <p className="font-semibold text-brand-blue">{exp.company}</p>
+                    )}
                   </div>
                 </div>
                 <span

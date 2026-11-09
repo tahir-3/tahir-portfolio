@@ -18,6 +18,8 @@ import postman from "./assets/tech/postman.png";
 
 import hasafh from "./assets/company/hasafh.png";
 import projecx from "./assets/company/projecx.jpeg";
+import anvil from "./assets/company/anvil.jpeg";
+import ard from "./assets/company/ard.png";
 
 import owlTheme from "./assets/projects/owl-theme.webp";
 import travex from "./assets/projects/travex.webp";
@@ -100,6 +102,7 @@ export const experiences = [
   {
     title: "Software Developer",
     company: "PROJECXIO",
+    companyUrl: "https://www.linkedin.com/company/projecxio",
     icon: projecx,
     date: "Mar 2025 – Present",
     current: true,
@@ -115,6 +118,7 @@ export const experiences = [
   {
     title: "Full Stack Developer",
     company: "Hasafh",
+    companyUrl: "https://www.linkedin.com/company/hasafhtech",
     icon: hasafh,
     date: "May 2024 – Present",
     current: true,
@@ -127,7 +131,8 @@ export const experiences = [
   {
     title: "Software Developer",
     company: "Ard",
-    icon: null,
+    companyUrl: "https://github.com/ard-ly",
+    icon: ard,
     date: "Jan 2023 – Oct 2023",
     points: [
       "Customized Frappe core to match company-specific requirements.",
@@ -138,7 +143,8 @@ export const experiences = [
   {
     title: "Frappe Developer",
     company: "AnvilERP",
-    icon: null,
+    companyUrl: "https://www.linkedin.com/company/anvil-erp",
+    icon: anvil,
     date: "Aug 2020 – Jan 2023",
     points: [
       "Customized ERPNext Accounting, Selling, Buying and HR modules for client needs.",
