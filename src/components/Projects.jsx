@@ -2,6 +2,51 @@ import Reveal from "./Reveal";
 import SectionHeading from "./SectionHeading";
 import { projects, profile } from "../data";
 
+/** Featured card: three phone screens beside the text, links to the in-page showcase. */
+const FeaturedCard = ({ project }) => (
+  <a
+    href={project.anchor}
+    aria-label={`${project.name}: view app screens`}
+    className="brutal-card brutal-card-hover group grid overflow-hidden lg:grid-cols-[1fr_1.15fr]"
+  >
+    <div className="order-2 flex flex-col p-5 sm:p-8 lg:order-1">
+      <span className="w-fit border-2 border-border bg-inverse px-2.5 py-1 text-xs font-bold text-inverse-foreground shadow-brutal-sm">
+        Featured · Mobile app
+      </span>
+      <h3 className="mt-4 text-2xl font-bold sm:text-3xl">{project.name}</h3>
+      <p className="mt-3 flex-1 leading-relaxed text-muted-foreground sm:text-lg">{project.description}</p>
+      <ul className="mt-5 flex flex-wrap gap-2">
+        {project.tags.map((t) => (
+          <li key={t} className="border-2 border-border bg-muted px-2 py-0.5 font-mono text-xs font-semibold">
+            #{t}
+          </li>
+        ))}
+      </ul>
+      <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-bold text-brand-blue">
+        View app screens
+        <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-y-0.5" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
+          <path d="M12 5v14M6 13l6 6 6-6" />
+        </svg>
+      </span>
+    </div>
+    <div
+      className={`bg-grid order-1 flex items-end justify-center gap-3 overflow-hidden border-b-2 border-border px-4 pt-8 sm:gap-5 lg:order-2 lg:border-b-0 lg:border-l-2 ${project.accent}`}
+    >
+      {project.screens.map((src, i) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          loading="lazy"
+          className={`w-[30%] max-w-[190px] rounded-[11%/5%] drop-shadow-[6px_4px_0_rgba(0,0,0,0.9)] transition-transform duration-300 motion-reduce:transition-none ${
+            i === 1 ? "-mb-2 group-hover:-translate-y-2" : "translate-y-8 group-hover:translate-y-5"
+          }`}
+        />
+      ))}
+    </div>
+  </a>
+);
+
 const ProjectCard = ({ project }) => {
   const Wrapper = project.link ? "a" : "div";
   const linkProps = project.link
@@ -59,8 +104,12 @@ const Projects = () => (
 
     <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {projects.map((p, i) => (
-        <Reveal key={p.name} delay={i * 0.1} className="h-full">
-          <ProjectCard project={p} />
+        <Reveal
+          key={p.name}
+          delay={p.screens ? 0 : i * 0.1}
+          className={p.screens ? "sm:col-span-2 lg:col-span-3" : "h-full"}
+        >
+          {p.screens ? <FeaturedCard project={p} /> : <ProjectCard project={p} />}
         </Reveal>
       ))}
     </div>

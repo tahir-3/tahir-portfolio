@@ -23,6 +23,13 @@ import owlTheme from "./assets/projects/owl-theme.webp";
 import revenyu from "./assets/projects/revenyu.webp";
 import travex from "./assets/projects/travex.webp";
 
+import aidDashboard from "./assets/projects/aid/aid-dashboard.webp";
+import aidList from "./assets/projects/aid/aid-list.webp";
+import aidPrisoners from "./assets/projects/aid/aid-prisoners.webp";
+import aidNew from "./assets/projects/aid/aid-new.webp";
+import aidPicker from "./assets/projects/aid/aid-picker.webp";
+import aidRecipients from "./assets/projects/aid/aid-recipients.webp";
+
 export const profile = {
   firstName: "Tahir",
   fullName: "Tahir Zaqout",
@@ -135,7 +142,32 @@ export const experiences = [
   },
 ];
 
+// Mobile app screens. Personal data (names, ID numbers) is blurred.
+export const aidApp = {
+  id: "aid-app",
+  name: "Humanitarian Aid Management",
+  description:
+    "Arabic RTL mobile app for tracking beneficiaries and aid distribution: live dashboard, offline sync, record registries and fast multi-select aid entry.",
+  tags: ["mobile", "frappe", "arabic rtl", "offline sync"],
+  screens: [
+    { src: aidDashboard, title: "Dashboard", caption: "Live totals, sync progress and a 6-month aid chart." },
+    { src: aidList, title: "Aid list", caption: "Search and filter 34k+ aid records by type and status." },
+    { src: aidNew, title: "New aid", caption: "Guided entry form with required-field validation." },
+    { src: aidPicker, title: "Bulk select", caption: "Pick many beneficiaries at once with search." },
+    { src: aidRecipients, title: "Recipient history", caption: "Per-person aid history in a bottom sheet, with export." },
+    { src: aidPrisoners, title: "Registries", caption: "Dedicated registries with quick access to each person's aid." },
+  ],
+};
+
 export const projects = [
+  {
+    name: aidApp.name,
+    description: aidApp.description,
+    tags: aidApp.tags,
+    screens: [aidList, aidDashboard, aidRecipients],
+    anchor: `#${aidApp.id}`,
+    accent: "bg-brand-yellow",
+  },
   {
     name: "Revenyu",
     description:
