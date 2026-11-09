@@ -6,6 +6,7 @@ import About from "./components/About";
 import Experience from "./components/Experience";
 import Projects from "./components/Projects";
 import Showcase from "./components/Showcase";
+import { aidApp, revenyuApp } from "./data";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 
@@ -24,7 +25,8 @@ const App = () => (
       <About />
       <Experience />
       <Projects />
-      <Showcase />
+      <Showcase app={aidApp} />
+      <Showcase app={revenyuApp} />
       <Contact />
     </main>
     <Footer />

@@ -48,15 +48,18 @@ const FeaturedCard = ({ project }) => (
 );
 
 const ProjectCard = ({ project }) => {
-  const Wrapper = project.link ? "a" : "div";
-  const linkProps = project.link
-    ? { href: project.link, target: "_blank", rel: "noreferrer", "aria-label": `${project.name} source code on GitHub` }
-    : {};
+  const href = project.anchor || project.link;
+  const Wrapper = href ? "a" : "div";
+  const linkProps = project.anchor
+    ? { href: project.anchor, "aria-label": `${project.name}: view screens` }
+    : project.link
+      ? { href: project.link, target: "_blank", rel: "noreferrer", "aria-label": `${project.name} source code on GitHub` }
+      : {};
 
   return (
     <Wrapper
       {...linkProps}
-      className={`brutal-card group flex h-full flex-col overflow-hidden ${project.link ? "brutal-card-hover" : ""}`}
+      className={`brutal-card group flex h-full flex-col overflow-hidden ${href ? "brutal-card-hover" : ""}`}
     >
       <div className={`relative aspect-[16/10] overflow-hidden border-b-2 border-border ${project.accent}`}>
         <img
@@ -83,9 +86,9 @@ const ProjectCard = ({ project }) => {
             </li>
           ))}
         </ul>
-        {project.link && (
+        {href && (
           <span className="mt-5 inline-flex items-center gap-1.5 text-sm font-bold text-brand-blue">
-            View source
+            {project.anchor ? "View screens" : "View source"}
             <svg viewBox="0 0 24 24" className="h-4 w-4 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" strokeWidth="3" aria-hidden="true">
               <path d="M5 12h14M13 6l6 6-6 6" />
             </svg>
