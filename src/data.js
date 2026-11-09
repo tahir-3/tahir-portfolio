@@ -20,7 +20,6 @@ import hasafh from "./assets/company/hasafh.png";
 import projecx from "./assets/company/projecx.jpeg";
 
 import owlTheme from "./assets/projects/owl-theme.webp";
-import revenyu from "./assets/projects/revenyu.webp";
 import travex from "./assets/projects/travex.webp";
 
 import aidDashboard from "./assets/projects/aid/aid-dashboard.webp";
@@ -29,6 +28,13 @@ import aidPrisoners from "./assets/projects/aid/aid-prisoners.webp";
 import aidNew from "./assets/projects/aid/aid-new.webp";
 import aidPicker from "./assets/projects/aid/aid-picker.webp";
 import aidRecipients from "./assets/projects/aid/aid-recipients.webp";
+
+import rvLeads from "./assets/projects/revenyu/revenyu-leads.webp";
+import rvHrDashboard from "./assets/projects/revenyu/revenyu-hr-dashboard.webp";
+import rvEmployees from "./assets/projects/revenyu/revenyu-employees.webp";
+import rvAttendance from "./assets/projects/revenyu/revenyu-attendance.webp";
+import rvSalary from "./assets/projects/revenyu/revenyu-salary.webp";
+import rvBirthdays from "./assets/projects/revenyu/revenyu-birthdays.webp";
 
 export const profile = {
   firstName: "Tahir",
@@ -146,6 +152,10 @@ export const experiences = [
 export const aidApp = {
   id: "aid-app",
   name: "Humanitarian Aid Management",
+  eyebrow: "App showcase",
+  title: "Inside the",
+  highlight: "aid app.",
+  variant: "phone",
   description:
     "Arabic RTL mobile app for tracking beneficiaries and aid distribution: live dashboard, offline sync, record registries and fast multi-select aid entry.",
   tags: ["mobile", "frappe", "arabic rtl", "offline sync"],
@@ -156,6 +166,25 @@ export const aidApp = {
     { src: aidPicker, title: "Bulk select", caption: "Pick many beneficiaries at once with search." },
     { src: aidRecipients, title: "Recipient history", caption: "Per-person aid history in a bottom sheet, with export." },
     { src: aidPrisoners, title: "Registries", caption: "Dedicated registries with quick access to each person's aid." },
+  ],
+};
+
+export const revenyuApp = {
+  id: "revenyu-showcase",
+  name: "Revenyu",
+  eyebrow: "Platform showcase",
+  title: "Inside",
+  highlight: "Revenyu.",
+  variant: "desktop",
+  description:
+    "Real estate CRM with built-in HR and payroll: lead pipelines, saved views and filters, attendance, salary structures and reports, in English and Arabic.",
+  screens: [
+    { src: rvLeads, title: "Leads", caption: "10k+ leads with saved views, quick filters and status tracking." },
+    { src: rvHrDashboard, title: "HR dashboard", caption: "Check-in, quick actions, requests and attendance chart." },
+    { src: rvEmployees, title: "Employees", caption: "Employee directory with rich filters and custom columns." },
+    { src: rvAttendance, title: "Attendance", caption: "Daily attendance with shift, leave, late entry and early exit." },
+    { src: rvSalary, title: "Salary components", caption: "Earnings and deductions that drive payroll." },
+    { src: rvBirthdays, title: "Reports", caption: "HR reports such as monthly employee birthdays." },
   ],
 };
 
@@ -173,8 +202,9 @@ export const projects = [
     description:
       "All-in-one real estate and CRM platform that streamlines property management, client relationships and the sales pipeline.",
     tags: ["vue.js", "rest api", "tailwind"],
-    image: revenyu,
+    image: rvLeads,
     link: "",
+    anchor: `#${revenyuApp.id}`,
     accent: "bg-brand-blue",
   },
   {
